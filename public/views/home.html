@@ -1,0 +1,59 @@
+<div class="jumbotron text-center">
+
+  <div class="container">
+<div class="col-sm-6 col-sm-offset-3">
+  
+  <form name="form" id="sign-in-form" ng-submit="submit()" autocomplete="off">
+
+<div class="row">
+  <div class="col-sm-12">
+      <div class="form-group">
+        <label>Question</label>
+          <input type="text" class="form-control" name="Question" ng-model="question">
+      </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-12">
+      <div class="form-group">
+        <label>Answer</label>
+          <input type="text" class="form-control" name="Answer" ng-model="answer">
+      </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-6 col-sm-offset-3">
+      <div class="form-group">
+        <label>Category</label>
+
+        <ui-select ng-model="selectedItem">
+            <ui-select-match>
+                <span ng-bind="$select.selected.name"></span>
+            </ui-select-match>
+            <ui-select-choices repeat="item in (itemArray | filter: $select.search) track by item.id">
+                <span ng-bind="item.name"></span>
+            </ui-select-choices>
+        </ui-select>
+
+      </div>
+  </div>
+</div>
+<div class="row">
+
+      <!--<button ng-disabled="form.$invalid" type="submit" class="btn btn-warning btn-lg">Generate</button>-->
+      <button type="submit" class="btn btn-warning btn-lg">Submit</button>
+
+    <hr>
+    <hr>
+    
+    <div class="text-center">
+      <p>Submit New Question for Trivial Pursuit</p>
+    </div>
+
+
+
+</div>
+</form>
+</div>
+</div>
+</div>

@@ -1,0 +1,13 @@
+{
+  "name": "Trivia",
+  "version": "1.0.0",
+  "dependencies": {
+    "angular": "latest",
+    "angular-bootstrap": "~0.14.2",
+    "angular-route": "latest",
+    "angular-sanitize": "~1.4.8",
+    "bootstrap": "latest",
+    "moment": "~2.10.6",
+    "ui-select": "angular-ui-select#~0.13.2"
+  }
+}

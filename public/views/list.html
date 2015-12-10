@@ -1,0 +1,34 @@
+<div class="gridContainer show-hide-animation">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Question</th>
+            <th>Answer</th>
+            <th>Category</th>
+            <!--<th ng-if="location.path() == '/hordemind'" data-ng-click="setOrder('id')">Rank</th>-->
+            <!--<th ng-if="location.path() != '/hordemind'">Delete</th>-->
+            <!--<th data-ng-click="setOrder('title')">Name</th>-->
+            <!--<th data-ng-click="setOrder('author')">Author</th>-->
+            <th ng-if="path == 'pending'">Ratify</th>
+            <th ng-if="path != 'pending'">Veto</th>
+          </tr>
+        </thead>
+        <tbody>
+        <!--<tr data-ng-repeat="bk in lists | orderBy:orderby:reverse" class="repeat-animation">-->
+        <tr data-ng-repeat="bk in list" class="repeat-animation">
+          <!--<td ng-if="location.path() == '/hordemind'" data-th="Rank">{{bk.id}}</td>-->
+          <!--<td ng-if="location.path() != '/hordemind'">-->
+            <!--<span ng-click="deleteBook(bk._id)"class="del noselect">&#10006;</span>-->
+          <!--</td>-->
+          <td data-th="Question"> {{bk.question}}</td>
+          <td data-th="Answer">{{bk.answer}}</td>
+          <td data-th="Category">{{bk.category}}</td>
+          <td ng-if="path == 'pending'">
+            <button class="btn btn-success" data-ng-click="submit(bk.id)">&#10004;</button></td>
+          <td ng-if="path != 'pending'">
+            <button class="btn btn-danger" data-ng-click="submit(bk.id)">&#x2717;</button></td>
+        </tr>
+        </tbody>
+      </table>
+</div>
+
