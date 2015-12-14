@@ -1,1 +1,1 @@
-angular.module('myApp', ['ngRoute', 'appRoutes', 'ui.bootstrap', 'MainCtrl', 'PendingCtrl', 'ListCtrl', 'ui.select', 'ngSanitize']);
+angular.module('myApp', ['ngRoute', 'appRoutes', 'ui.bootstrap', 'MainCtrl', 'PendingCtrl', 'ListCtrl', 'ui.select', 'ngSanitize', 'infinite-scroll', 'firebase']).run(function($rootScope) {  $rootScope.ref = new Firebase("https://trivia69.firebaseio.com/");  $rootScope.scrollRef = new Firebase.util.Scroll($rootScope.ref, 'number');})

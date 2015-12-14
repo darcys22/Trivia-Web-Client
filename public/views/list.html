@@ -13,8 +13,7 @@
             <th ng-if="path != 'pending'">Veto</th>
           </tr>
         </thead>
-        <tbody>
-        <!--<tr data-ng-repeat="bk in lists | orderBy:orderby:reverse" class="repeat-animation">-->
+        <tbody infinite-scroll='loadMore()' infinite-scroll-distance='2'>
         <tr data-ng-repeat="bk in list" class="repeat-animation">
           <!--<td ng-if="location.path() == '/hordemind'" data-th="Rank">{{bk.id}}</td>-->
           <!--<td ng-if="location.path() != '/hordemind'">-->

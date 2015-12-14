@@ -1,4 +1,5 @@
-angular.module('MainCtrl', []).controller('MainController', function($scope) {
+angular.module('MainCtrl', []).controller('MainController', function($scope, $rootScope) {
+  var list = $firebaseArray($rootScope.scrollRef);
 
   $scope.itemArray = [
       {id: 1, name: 'Geography'},
@@ -12,9 +13,8 @@ angular.module('MainCtrl', []).controller('MainController', function($scope) {
   $scope.selectedItem = $scope.itemArray[0];
   
   $scope.submit = function() {
-
-
-
+    list.add({question: $scope.question, answer: $scope.answer, category: $scope.selectedItem});
+    list.save()
 
   };
 
