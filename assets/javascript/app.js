@@ -1,4 +1,5 @@
-angular.module('MainCtrl', []).controller('MainController', function($scope) {
+angular.module('MainCtrl', []).controller('MainController', function($scope, $rootScope) {
+  var list = $firebaseArray($rootScope.scrollRef);
 
   $scope.itemArray = [
       {id: 1, name: 'Geography'},
@@ -12,9 +13,8 @@ angular.module('MainCtrl', []).controller('MainController', function($scope) {
   $scope.selectedItem = $scope.itemArray[0];
   
   $scope.submit = function() {
-
-
-
+    list.add({question: $scope.question, answer: $scope.answer, category: $scope.selectedItem});
+    list.save()
 
   };
 
@@ -42,6 +42,14 @@ angular.module('ListCtrl', []).controller('ListController', function($scope) {
       { id: 2, question: 3, answer: 'Foo', category: 'blah' },
       { id: 3, question: 4, answer: 'Foo', category: 'blah' },
   ];
+
+  $scope.loadMore = function() {
+    var last = $scope.list.length -1;
+    for(var i = 1; i <= 8; i++) {
+      last++
+      $scope.list.push({id: last, question: last +1, answer: 'Foo', category: 'blah'});
+    }
+  }
 
 
 });
@@ -72,4 +80,4 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
 
 }]);
 
-angular.module('myApp', ['ngRoute', 'appRoutes', 'ui.bootstrap', 'MainCtrl', 'PendingCtrl', 'ListCtrl', 'ui.select', 'ngSanitize']);
+angular.module('myApp', ['ngRoute', 'appRoutes', 'ui.bootstrap', 'MainCtrl', 'PendingCtrl', 'ListCtrl', 'ui.select', 'ngSanitize', 'infinite-scroll', 'firebase']).run(function($rootScope) {  $rootScope.ref = new Firebase("https://trivia69.firebaseio.com/");  $rootScope.scrollRef = new Firebase.util.Scroll($rootScope.ref, 'number');})
