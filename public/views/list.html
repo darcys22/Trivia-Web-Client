@@ -5,8 +5,8 @@
             <th>Question</th>
             <th>Answer</th>
             <th>Category</th>
-            <th ng-if="path == 'pending'">Ratify</th>
-            <th ng-if="path != 'pending'">Veto</th>
+            <!--<th ng-if="path == 'pending'">Ratify</th>-->
+            <!--<th ng-if="path != 'pending'">Veto</th>-->
           </tr>
         </thead>
         <tbody infinite-scroll='list.scroll.next(10)' infinite-scroll-distance='1'>
@@ -14,10 +14,10 @@
           <td data-th="Question"> {{bk.question}}</td>
           <td data-th="Answer">{{bk.answer}}</td>
           <td data-th="Category">{{bk.category}}</td>
-          <td ng-if="path == 'pending'">
-            <button class="btn btn-success" data-ng-click="submit(bk.id)">&#10004;</button></td>
-          <td ng-if="path != 'pending'">
-            <button class="btn btn-danger" data-ng-click="submit(bk.id)">&#x2717;</button></td>
+          <!--<td ng-if="path == 'pending'">-->
+            <!--<button class="btn btn-success" data-ng-click="submit(bk.id)">&#10004;</button></td>-->
+          <!--<td ng-if="path != 'pending'">-->
+            <!--<button class="btn btn-danger" data-ng-click="submit(bk.id)">&#x2717;</button></td>-->
         </tr>
         </tbody>
       </table>
