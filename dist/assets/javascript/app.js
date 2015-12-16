@@ -33,26 +33,16 @@ angular.module('PendingCtrl', []).controller('PendingController', function($scop
 
 });
 
-angular.module('ListCtrl', []).controller('ListController', function($scope) {
+angular.module('ListCtrl', []).controller('ListController', ['$rootScope', '$scope', '$firebaseArray', function($rootScope, $scope, $firebaseArray) {
 
   $scope.path = 'list';
 
-  $scope.list = [
-      { id: 1, question: 1, answer: 'Foo', category: 'blah' },
-      { id: 2, question: 3, answer: 'Foo', category: 'blah' },
-      { id: 3, question: 4, answer: 'Foo', category: 'blah' },
-  ];
+  $scope.list = $firebaseArray($rootScope.scrollRef);
 
-  $scope.loadMore = function() {
-    var last = $scope.list.length -1;
-    for(var i = 1; i <= 8; i++) {
-      last++
-      $scope.list.push({id: last, question: last +1, answer: 'Foo', category: 'blah'});
-    }
-  }
+  $scope.list.scroll = $rootScope.scrollRef.scroll
 
 
-});
+}]);
 
 angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
 
